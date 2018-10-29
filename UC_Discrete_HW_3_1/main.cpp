@@ -5,7 +5,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-
+#include <string>
 #include <algorithm> //for std::copy
 
 
@@ -13,37 +13,37 @@ using namespace std;
 
 
 
-void write_vector(vector<int>& vect)
-{
-	cout << "The numbers in the vector are: ";
-	for (int i = 0; i < vect.size(); i++) {
-		cout << vect[i] << " ";
-	}
-}
+
 
 int main()
 {
 	cout << "********************************************************" << endl;
 	cout << "Hierholzer's algorithm for computing an Eulerian circuit" << endl;
-	int numVertices;
-	cout << "Enter number of vertices: ";
-	cin >> numVertices;
+	cout << "********************************************************" << endl;
 
-	string line = "";
-	int number;
+	std::string source;
 	std::vector<int> numbers;
-	//stringstream check1(line);
 
-	cout << "Enter numbers separated by spaces: \n";
+	cout << "Enter numbers separated by spaces.\n"
+		<< "The first number is the size of the graph, \n"
+		<< "followed by pairs representing the edge set: ";
+	std::getline(std::cin, source);
+
+	for (int i = 0; i < source.length(); i++) {
+
+		char c = source[i];
+		int num = (int) c - 48;
+		if (isdigit(num)) {
+			cout << num << endl;
+			numbers.push_back(num);
+		}
+
+	}
 	
-	getline(cin >> line, line);
+	
 
-	stringstream stream(line);
-	while (stream >> number)
-		numbers.push_back(number);
-
-	cout << numbers.size() << endl;
-	write_vector(numbers);
+	
+	
 
 	cout << endl;
 	system("pause");
